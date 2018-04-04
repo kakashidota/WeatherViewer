@@ -13,16 +13,7 @@ import SwiftyJSON
 
 class ViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate, backToMain {
     
-    func updateUIWIthData(city: WeatherDataModel) {
-        updateUIWithWeatherData(city: city)
-    }
-    
-   
-    
-    
-
-    
-   
+  
     
     @IBOutlet weak var tempretureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
@@ -35,7 +26,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDel
     let locationManager = CLLocationManager()
     var city = WeatherDataModel()
     var cityArray : [WeatherDataModel] = []
-    var favCities : [String] = [""]
+    var favCities : [String] = []
     var cityDidChange : (yesOrNo : Bool, atIndex : Int) = (false, 0)
 
     
@@ -43,15 +34,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDel
     override func viewWillAppear(_ animated: Bool) {
         
         
-        if cityDidChange.yesOrNo{
-            let city : WeatherDataModel = cityArray[cityDidChange.atIndex]
-            updateUIWithWeatherData(city: city)
-            
-            cityDidChange.yesOrNo = false
-            
-        }
+ 
     }
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -65,9 +50,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDel
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if favCities.count == 0 {
+      
             loadSavedFavorites()
-        }
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -89,8 +74,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDel
                 print(response.result.description)
                 
                 let weatherJSON : JSON  = JSON(response.result.value!)
-                
-                
                 self.updateWeatherData(json: weatherJSON)
                 
             } else {
@@ -102,17 +85,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDel
  
     func updateWeatherData(json : JSON){
         if let tempResult = json["main"]["temp"].double{
-        
             city.temperature = Int(tempResult - 273.15)
             city.city = json["name"].stringValue
             city.condition = json["weather"][0]["id"].intValue
             city.weatherIconName = city.updateWeatherIcon(condition: city.condition)
             updateUIWithWeatherData(city: city)
-            
         } else {
             cityLabel.text = "Weather unavailable"
         }
-        
     }
     
     func updateUIWithWeatherData(city : WeatherDataModel){
@@ -155,6 +135,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDel
         
     }
     
+    func updateUIWIthData(city: String) {
+        let params : [String : String] = ["q" : city, "appid" : APP_ID]
+        getWeatherData(url: WEATHER_URL, parameters: params)
+        
+        
+    }
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "changeCityName" {
@@ -176,6 +165,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDel
         cityArray.append(city)
         favCities.append(cityLabel.text!)
         defaults.set(favCities, forKey: "cities")
+        
         
     }
     

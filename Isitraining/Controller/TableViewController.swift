@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 protocol backToMain {
-    func updateUIWIthData(city: WeatherDataModel)
+    func updateUIWIthData(city: String)
 
 }
 
@@ -33,8 +33,9 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
     var mainDelegate : backToMain?
     var filtredCityList : [WeatherDataModel] = []
     let weatherModel = WeatherDataModel()
-    var listOfCitysInString : [String] = [""]
+    var listOfCitysInString : [String] = []
     var isSearching = false
+    var userDefaults = UserDefaults.standard
     
 
     
@@ -53,11 +54,13 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
          self.navigationItem.rightBarButtonItem = self.editButtonItem
         myTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
         configureTableview()
+        myTableView.tableFooterView = UIView()
+
 
     }
     
     override func viewDidLayoutSubviews() {
-        let jeremyGif = UIImage.gifImageWithName("lightning")
+        let jeremyGif = UIImage.gifImageWithName("snowgif")
         let imageView = UIImageView(image: jeremyGif)
         imageView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         super.view.insertSubview(imageView, at: 0)
@@ -65,6 +68,7 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
     }
     override func viewDidAppear(_ animated: Bool) {
       //  myTableView.reloadData()
+        listOfCitysInString = UserDefaults.standard.stringArray(forKey: "cities") ?? [String]()
     }
     
 
@@ -79,14 +83,15 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        mainDelegate?.updateUIWIthData(city: listOfCitys[indexPath.row])
+        
+        print("selected row \(indexPath.row)")
+        print("Selected city = \(listOfCitysInString[indexPath.row])")
+        let city = listOfCitysInString[indexPath.row]
+        
+        mainDelegate?.updateUIWIthData(city: city)
         
         navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
-        
-    }
-    
-    func updateUIWIthData(city: WeatherDataModel, atIndex: Int) {
         
     }
 
@@ -142,7 +147,8 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
             cell.cityLabel.text = self.weatherModel.city
             cell.tempLabel.text = String("\(self.weatherModel.temperature)" + "℃")
             cell.iconView.image = UIImage(named: self.weatherModel.weatherIconName)
-            
+            listOfCitys.append(weatherModel)
+
             
             print(weatherModel.city)
             print(weatherModel.temperature)
@@ -168,7 +174,11 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            listOfCitysInString.remove(at: indexPath.row)
+            userDefaults.set(listOfCitysInString, forKey: "cities")
             tableView.deleteRows(at: [indexPath], with: .fade)
+
+
         } else if editingStyle == .insert {
         }
     }

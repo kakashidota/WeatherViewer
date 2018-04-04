@@ -26,6 +26,14 @@ class ChangeCityController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewDidLayoutSubviews() {
+        let jeremyGif = UIImage.gifImageWithName("rainygif")
+        let imageView = UIImageView(image: jeremyGif)
+        imageView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        super.view.insertSubview(imageView, at: 0)
+        
+    }
+    
     @IBAction func getWeatherPressed(_ sender: Any) {
      
         

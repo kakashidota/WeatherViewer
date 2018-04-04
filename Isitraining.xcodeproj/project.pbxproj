@@ -10,6 +10,9 @@
 		0F2ABA05206ABFBE00379CB4 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2ABA04206ABFBE00379CB4 /* iOSDevCenters+GIF.swift */; };
 		0F2ABA07206AC10700379CB4 /* storm.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F2ABA06206AC10600379CB4 /* storm.gif */; };
 		0F2ABA09206AC1CF00379CB4 /* lightning.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F2ABA08206AC1CF00379CB4 /* lightning.gif */; };
+		0F4C655020756638004A9070 /* snowgif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F4C654F20756638004A9070 /* snowgif.gif */; };
+		0F4C655220756A9E004A9070 /* raingif.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0F4C655120756A9E004A9070 /* raingif.jpg */; };
+		0F4C655420756B6A004A9070 /* rainygif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F4C655320756B69004A9070 /* rainygif.gif */; };
 		0F4D952920644A6B00ABF177 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4D952820644A6B00ABF177 /* AppDelegate.swift */; };
 		0F4D952B20644A6B00ABF177 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4D952A20644A6B00ABF177 /* MainViewController.swift */; };
 		0F4D952E20644A6B00ABF177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F4D952C20644A6B00ABF177 /* Main.storyboard */; };
@@ -27,6 +30,9 @@
 		0F2ABA04206ABFBE00379CB4 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "iOSDevCenters+GIF.swift"; path = "GIF-Swift-master/GIF-Swift/iOSDevCenters+GIF.swift"; sourceTree = SOURCE_ROOT; };
 		0F2ABA06206AC10600379CB4 /* storm.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = storm.gif; sourceTree = "<group>"; };
 		0F2ABA08206AC1CF00379CB4 /* lightning.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = lightning.gif; sourceTree = "<group>"; };
+		0F4C654F20756638004A9070 /* snowgif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = snowgif.gif; sourceTree = "<group>"; };
+		0F4C655120756A9E004A9070 /* raingif.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = raingif.jpg; sourceTree = "<group>"; };
+		0F4C655320756B69004A9070 /* rainygif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = rainygif.gif; sourceTree = "<group>"; };
 		0F4D952520644A6B00ABF177 /* Isitraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Isitraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F4D952820644A6B00ABF177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F4D952A20644A6B00ABF177 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -92,7 +98,10 @@
 				0F65AAD220645A220000767D /* View */,
 				0F4D952820644A6B00ABF177 /* AppDelegate.swift */,
 				0F2ABA08206AC1CF00379CB4 /* lightning.gif */,
+				0F4C655120756A9E004A9070 /* raingif.jpg */,
 				0F2ABA06206AC10600379CB4 /* storm.gif */,
+				0F4C655320756B69004A9070 /* rainygif.gif */,
+				0F4C654F20756638004A9070 /* snowgif.gif */,
 				0F2ABA04206ABFBE00379CB4 /* iOSDevCenters+GIF.swift */,
 				0F4D952F20644A6B00ABF177 /* Assets.xcassets */,
 				0F4D953120644A6B00ABF177 /* LaunchScreen.storyboard */,
@@ -209,8 +218,11 @@
 			files = (
 				0F2ABA07206AC10700379CB4 /* storm.gif in Resources */,
 				0F2ABA09206AC1CF00379CB4 /* lightning.gif in Resources */,
+				0F4C655220756A9E004A9070 /* raingif.jpg in Resources */,
 				0F4D953320644A6B00ABF177 /* LaunchScreen.storyboard in Resources */,
+				0F4C655420756B6A004A9070 /* rainygif.gif in Resources */,
 				0F5A49A12068E7CC00261C33 /* TableViewCell.xib in Resources */,
+				0F4C655020756638004A9070 /* snowgif.gif in Resources */,
 				0F4D953020644A6B00ABF177 /* Assets.xcassets in Resources */,
 				0F4D952E20644A6B00ABF177 /* Main.storyboard in Resources */,
 			);
@@ -431,6 +443,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RK.Isitraining;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos11.2;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -447,6 +460,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RK.Isitraining;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos11.2;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
