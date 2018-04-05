@@ -8,5 +8,6 @@ target 'Isitraining' do
 pod 'SwiftyJSON'
 pod 'Alamofire'
 pod 'SVProgressHUD'
+pod 'GraphKit'
 
 end

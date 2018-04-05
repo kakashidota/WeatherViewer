@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vpM-Q5-AMF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="quP-w8-QQO">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -88,6 +88,14 @@
                                     <action selector="addToFavPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HZf-fA-eFj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVu-DL-gp7">
+                                <rect key="frame" x="286" y="102" width="108" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="quP-w8-QQO" kind="show" id="f0w-tI-IKE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -102,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1059.4202898550725" y="133.69565217391306"/>
+            <point key="canvasLocation" x="1366.6666666666667" y="133.69565217391306"/>
         </scene>
         <!--Search-->
         <scene sceneID="GzL-Fb-g5R">
@@ -137,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2AB-xl-krC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1797.1014492753625" y="-229.07608695652175"/>
+            <point key="canvasLocation" x="2104.3478260869565" y="-229.07608695652175"/>
         </scene>
         <!--Recent visited-->
         <scene sceneID="IvW-Qn-fYw">
@@ -176,25 +184,79 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8IM-Q8-0aC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1797.1014492753625" y="447.554347826087"/>
+            <point key="canvasLocation" x="2104.3478260869565" y="447.554347826087"/>
+        </scene>
+        <!--Compare City Controller-->
+        <scene sceneID="qr9-Yl-yr5">
+            <objects>
+                <viewController id="quP-w8-QQO" customClass="CompareCityController" customModule="Isitraining" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ayS-IP-HLH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SsN-d3-VkU">
+                                <rect key="frame" x="0.0" y="100" width="197" height="104"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c9R-7H-dcG">
+                                <rect key="frame" x="217" y="100" width="197" height="104"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0HP-Hb-iup" customClass="GKBarGraph">
+                                <rect key="frame" x="0.0" y="276" width="197" height="269"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.81926003889999999" green="0.81624031720000001" blue="0.81605386059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WIe-Ft-fKm" customClass="GKBarGraph">
+                                <rect key="frame" x="217" y="276" width="197" height="269"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.81926003889999999" green="0.81624031720000001" blue="0.81605386059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDj-wB-7Rr">
+                                <rect key="frame" x="100" y="212" width="211" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWb-b2-4Ho">
+                                <rect key="frame" x="102" y="212" width="211" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="comparePressed:" destination="quP-w8-QQO" eventType="touchUpInside" id="KvC-RQ-KJw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="0ul-jG-9Py"/>
+                    </view>
+                    <connections>
+                        <outlet property="firstPicker" destination="SsN-d3-VkU" id="GhP-ww-hbQ"/>
+                        <outlet property="graph" destination="0HP-Hb-iup" id="XZo-75-T7M"/>
+                        <outlet property="graph2" destination="WIe-Ft-fKm" id="CaN-XJ-kJX"/>
+                        <outlet property="secondPicker" destination="c9R-7H-dcG" id="3nl-QR-vOM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KYq-h0-rCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="486.95652173913049" y="837.22826086956525"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="A1i-QK-UVc">
+        <scene sceneID="hkU-2t-SIt">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vpM-Q5-AMF" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EnE-cK-QgV" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="57s-VW-I1Y">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Rn6-Z8-74z">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="91J-87-HcD"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="bHb-24-xv9"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UUQ-te-K25" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UIl-Xy-tkP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="487" y="133"/>
+            <point key="canvasLocation" x="-112" y="80"/>
         </scene>
     </scenes>
 </document>

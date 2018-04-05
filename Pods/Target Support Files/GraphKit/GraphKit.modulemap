@@ -1,0 +1,6 @@
+framework module GraphKit {
+  umbrella header "GraphKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

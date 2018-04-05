@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F2334C62076166300DAB7FB /* CompareCityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2334C52076166300DAB7FB /* CompareCityController.swift */; };
 		0F2ABA05206ABFBE00379CB4 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2ABA04206ABFBE00379CB4 /* iOSDevCenters+GIF.swift */; };
 		0F2ABA07206AC10700379CB4 /* storm.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F2ABA06206AC10600379CB4 /* storm.gif */; };
 		0F2ABA09206AC1CF00379CB4 /* lightning.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F2ABA08206AC1CF00379CB4 /* lightning.gif */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F2334C52076166300DAB7FB /* CompareCityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareCityController.swift; sourceTree = "<group>"; };
 		0F2ABA04206ABFBE00379CB4 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "iOSDevCenters+GIF.swift"; path = "GIF-Swift-master/GIF-Swift/iOSDevCenters+GIF.swift"; sourceTree = SOURCE_ROOT; };
 		0F2ABA06206AC10600379CB4 /* storm.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = storm.gif; sourceTree = "<group>"; };
 		0F2ABA08206AC1CF00379CB4 /* lightning.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = lightning.gif; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				0F4D952A20644A6B00ABF177 /* MainViewController.swift */,
 				0F65AAD42066B1BB0000767D /* TableViewController.swift */,
 				0FA1B7ED206452110071F56E /* ChangeCityController.swift */,
+				0F2334C52076166300DAB7FB /* CompareCityController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -239,12 +242,18 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Isitraining/Pods-Isitraining-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/FrameAccessor/FrameAccessor.framework",
+				"${BUILT_PRODUCTS_DIR}/GraphKit/GraphKit.framework",
+				"${BUILT_PRODUCTS_DIR}/MKFoundationKit/MKFoundationKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FrameAccessor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GraphKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MKFoundationKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -295,6 +304,7 @@
 			files = (
 				0FA1B7EE206452110071F56E /* ChangeCityController.swift in Sources */,
 				0F2ABA05206ABFBE00379CB4 /* iOSDevCenters+GIF.swift in Sources */,
+				0F2334C62076166300DAB7FB /* CompareCityController.swift in Sources */,
 				0F65AAD72067CB410000767D /* WeatherDataModel.swift in Sources */,
 				0F4D952B20644A6B00ABF177 /* MainViewController.swift in Sources */,
 				0F5A49A02068E7CC00261C33 /* TableViewCell.swift in Sources */,
@@ -443,7 +453,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RK.Isitraining;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos11.2;
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -460,7 +470,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RK.Isitraining;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos11.2;
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
