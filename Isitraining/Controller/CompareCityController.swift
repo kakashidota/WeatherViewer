@@ -8,15 +8,24 @@
 
 import UIKit
 import GraphKit
+import Alamofire
+import SwiftyJSON
 
 class CompareCityController: UIViewController, GKBarGraphDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
    
     
     
+    @IBOutlet var myBtn: UIView!
     @IBOutlet weak var firstPicker: UIPickerView!
     @IBOutlet weak var graph: GKBarGraph!
-    @IBOutlet weak var graph2: GKBarGraph!
-    @IBOutlet weak var secondPicker: UIPickerView!
+    let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
+    let APP_ID = "c45a258ddcdf0e30f74360bdbfdeccf2"
+    var weatherJSON : JSON = JSON.null
+    var listOfCities : [WeatherDataModel] = []
+    var animator:UIDynamicAnimator?
+
+    
+    
     let userDefaults = UserDefaults.standard
     var favCitys : [String] = []
     
@@ -28,28 +37,57 @@ class CompareCityController: UIViewController, GKBarGraphDataSource, UIPickerVie
         print("\(favCitys)")
         firstPicker.dataSource = self
         firstPicker.delegate = self
-        secondPicker.delegate = self
-        secondPicker.dataSource = self
         graph.dataSource = self
-        graph2.dataSource = self
-        graph2.draw()
-        graph.draw()
+        
+        
+        let square = UIView()
+        
+        square.frame = CGRect(x: 20, y: 20, width: 20, height: 20)
+        square.backgroundColor = UIColor.red
+        
+        self.view.addSubview(square)
+        
+        self.animator = UIDynamicAnimator(referenceView:self.view)
+        var gravity = UIGravityBehavior(items: [square])
+        
+        animator!.addBehavior(gravity)
+        
         
         
         // Do any additional setup after loading the view.
     }
     
     @IBAction func comparePressed(_ sender: Any) {
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         updateLabel()
+        UIView.animate(withDuration: 0.6,
+                       animations: {
+                        self.myBtn.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        },
+                       completion: { _ in
+                        UIView.animate(withDuration: 0.6) {
+                            self.myBtn.transform = CGAffineTransform.identity
+                        }
+        })
+
     }
     
     func updateLabel(){
+        
         let city1 = favCitys[firstPicker.selectedRow(inComponent: 0)]
-        let city2 = favCitys[secondPicker.selectedRow(inComponent: 0)]
+        let city2 = favCitys[firstPicker.selectedRow(inComponent: 1)]
+        
+    
+        
+        let params : [String : String] = ["q" : city1, "appid" : APP_ID]
+        let params2 : [String : String] = ["q" : city2, "appid" : APP_ID]
+        
+        getWeatherData(url: WEATHER_URL, parameters: params)
+        getWeatherData(url: WEATHER_URL, parameters: params2)
+        
+        
         print("your citys are \(city1), \(city2)")
+  
+        
     }
     
     
@@ -59,19 +97,22 @@ class CompareCityController: UIViewController, GKBarGraphDataSource, UIPickerVie
     }
     
     func numberOfBars() -> Int {
-        return 3
+        return 2
     }
     
     func valueForBar(at index: Int) -> NSNumber! {
-        return index * 10 as NSNumber
+        return listOfCities[index].temperature as NSNumber
     }
     
     func titleForBar(at index: Int) -> String! {
-        return "\(index)"
+        return "Temp"
     }
     
+    
+    
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return 2
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -79,6 +120,57 @@ class CompareCityController: UIViewController, GKBarGraphDataSource, UIPickerVie
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return favCitys[row]
+    }
+    
+    // HTTPREQUEST
+    func getWeatherData(url : String, parameters : [String : String]){
+        
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON {
+            response in
+            if response.result.isSuccess{
+                print(response.result.description)
+                
+                let weatherJSON : JSON  = JSON(response.result.value!)
+                self.updateWeatherData(json: weatherJSON)
+                
+            } else {
+                print("error")
+            }
+        }
+        
+    }
+    func updateUIWithWeatherData(city: WeatherDataModel){
+        print("hej detta funkar bror \(listOfCities[0].city, listOfCities[1].city)")
+        graph.barWidth = 100
+        graph.draw()
+        
+        listOfCities = []
+        
+    }
+    
+    func updateWeatherData(json : JSON){
+        if let tempResult = json["main"]["temp"].double{
+            let city = WeatherDataModel()
+            city.temperature = Int(tempResult - 273.15)
+            city.city = json["name"].stringValue
+            city.condition = json["weather"][0]["id"].intValue
+            city.weatherIconName = city.updateWeatherIcon(condition: city.condition)
+        
+            listOfCities.append(city)
+            
+            if listOfCities.count > 1 {
+                updateUIWithWeatherData(city: city)
+
+            }
+          
+            
+        } else {
+           print("error")
+        }
+    }
+    
+    func updateUI (){
+        
     }
 
 }

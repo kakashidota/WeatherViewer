@@ -31,7 +31,7 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
     var listOfCitys : [WeatherDataModel] = []
     var delegate : ChangeCityDelegate?
     var mainDelegate : backToMain?
-    var filtredCityList : [WeatherDataModel] = []
+    var filtredCityList : [String] = []
     let weatherModel = WeatherDataModel()
     var listOfCitysInString : [String] = []
     var isSearching = false
@@ -103,8 +103,6 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
         getWeatherData(url: WEATHER_URL, parameters: params, cell : cell)
 
         
-        
-        
 //        if isSearching {
 //            cell.cityLabel.text = filtredCityList[indexPath.row].city
 //            cell.tempLabel.text = "\(filtredCityList[indexPath.row].temperature) ℃"
@@ -116,6 +114,16 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
 //        }
 //
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0
+        let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 30, 0)
+        
+        UIView.animate(withDuration: 1) {
+            cell.alpha = 1
+            cell.layer.transform = CATransform3DIdentity
+        }
     }
     
     func getWeatherData(url: String, parameters: [String : String], cell : TableViewCell) {
@@ -138,15 +146,22 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
     func updateWeatherData(json : JSON, cell : TableViewCell) {
         
         if let tempResult = json["main"]["temp"].double {
+            
+            
             weatherModel.temperature = Int(tempResult - 273.15)
             weatherModel.city = json["name"].stringValue
             weatherModel.condition = json["weather"][0]["id"].intValue
             weatherModel.weatherIconName = weatherModel.updateWeatherIcon(condition: weatherModel.condition)
 
+          
+                cell.cityLabel.text = self.weatherModel.city
+                cell.tempLabel.text = String("\(self.weatherModel.temperature)" + "℃")
+                cell.iconView.image = UIImage(named: self.weatherModel.weatherIconName)
             
-            cell.cityLabel.text = self.weatherModel.city
-            cell.tempLabel.text = String("\(self.weatherModel.temperature)" + "℃")
-            cell.iconView.image = UIImage(named: self.weatherModel.weatherIconName)
+            
+            
+            
+           
             listOfCitys.append(weatherModel)
 
             
@@ -194,8 +209,8 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
             
         } else {
             isSearching = true
-            //filtredCityList = listOfCitys.filter({$0.city == searchBar.text!})
-            filtredCityList = listOfCitys.filter{$0.city.contains(searchBar.text!)}
+            filtredCityList = listOfCitysInString.filter({$0 == searchBar.text!})
+          //  filtredCityList = listOfCitysInString.filter{$0.contains(searchBar.text!)}
             myTableView.reloadData()
         }
     }

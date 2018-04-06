@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F2334C62076166300DAB7FB /* CompareCityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2334C52076166300DAB7FB /* CompareCityController.swift */; };
+		0F2334C8207781C800DAB7FB /* LaucnScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2334C7207781C800DAB7FB /* LaucnScreenViewController.swift */; };
 		0F2ABA05206ABFBE00379CB4 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2ABA04206ABFBE00379CB4 /* iOSDevCenters+GIF.swift */; };
 		0F2ABA07206AC10700379CB4 /* storm.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F2ABA06206AC10600379CB4 /* storm.gif */; };
 		0F2ABA09206AC1CF00379CB4 /* lightning.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F2ABA08206AC1CF00379CB4 /* lightning.gif */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		0F2334C52076166300DAB7FB /* CompareCityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareCityController.swift; sourceTree = "<group>"; };
+		0F2334C7207781C800DAB7FB /* LaucnScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaucnScreenViewController.swift; sourceTree = "<group>"; };
 		0F2ABA04206ABFBE00379CB4 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "iOSDevCenters+GIF.swift"; path = "GIF-Swift-master/GIF-Swift/iOSDevCenters+GIF.swift"; sourceTree = SOURCE_ROOT; };
 		0F2ABA06206AC10600379CB4 /* storm.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = storm.gif; sourceTree = "<group>"; };
 		0F2ABA08206AC1CF00379CB4 /* lightning.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = lightning.gif; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				0F65AAD42066B1BB0000767D /* TableViewController.swift */,
 				0FA1B7ED206452110071F56E /* ChangeCityController.swift */,
 				0F2334C52076166300DAB7FB /* CompareCityController.swift */,
+				0F2334C7207781C800DAB7FB /* LaucnScreenViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				0F2334C62076166300DAB7FB /* CompareCityController.swift in Sources */,
 				0F65AAD72067CB410000767D /* WeatherDataModel.swift in Sources */,
 				0F4D952B20644A6B00ABF177 /* MainViewController.swift in Sources */,
+				0F2334C8207781C800DAB7FB /* LaucnScreenViewController.swift in Sources */,
 				0F5A49A02068E7CC00261C33 /* TableViewCell.swift in Sources */,
 				0F4D952920644A6B00ABF177 /* AppDelegate.swift in Sources */,
 				0F65AAD52066B1BB0000767D /* TableViewController.swift in Sources */,
@@ -383,7 +387,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -434,7 +438,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
