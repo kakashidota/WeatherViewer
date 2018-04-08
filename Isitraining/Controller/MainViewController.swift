@@ -13,12 +13,10 @@ import SwiftyJSON
 
 class ViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate, backToMain {
     
-  
-    
     @IBOutlet weak var tempretureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
-    
+    @IBOutlet weak var clothesView: UIImageView!
     @IBOutlet weak var bgImageView: UIImageView!
     let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
     let APP_ID = "c45a258ddcdf0e30f74360bdbfdeccf2"
@@ -29,13 +27,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDel
     var favCities : [String] = []
     var cityDidChange : (yesOrNo : Bool, atIndex : Int) = (false, 0)
 
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        
- 
-    }
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,8 +54,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDel
         super.view.insertSubview(imageView, at: 0)
     
     }
-    
-   
     
     
     func getWeatherData(url : String, parameters : [String : String]){
@@ -101,10 +90,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDel
         cityLabel.text = city.city 
         tempretureLabel.text = "\(city.temperature) ℃"
         weatherIcon.image = UIImage(named: city.weatherIconName)
+        
+        
+        let currentTemp = Int(city.temperature)
+        var tips : String = ""
+        
+        if currentTemp > 0 && currentTemp < 11 {
+            tips = "jacket"
+        } else if currentTemp < 0 {
+            tips = "winterJacket"
+        } else if currentTemp > 10 && currentTemp < 20{
+            tips = "tshirt"
+        } else if currentTemp > 20 {
+            tips = "shorts"
+        }
+        
+        clothesView.image = UIImage(named: tips)
 
     }
     
-   
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[locations.count - 1]
@@ -144,9 +148,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDel
     }
     
     
-    
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "changeCityName" {
@@ -169,13 +170,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDel
         favCities.append(cityLabel.text!)
         defaults.set(favCities, forKey: "cities")
         
-        
     }
     
     func loadSavedFavorites() {
         favCities = defaults.stringArray(forKey: "cities") ?? [String]()
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

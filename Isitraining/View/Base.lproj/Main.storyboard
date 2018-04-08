@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EnE-cK-QgV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EnE-cK-QgV">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Chalkduster.ttf">
-            <string>Chalkduster</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Welcome-->
         <scene sceneID="tne-QT-ifu">
@@ -103,6 +98,10 @@
                                     <segue destination="quP-w8-QQO" kind="show" id="f0w-tI-IKE"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wrQ-Iu-DGL">
+                                <rect key="frame" x="57" y="229" width="91" height="89"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -140,6 +139,7 @@
                     <connections>
                         <outlet property="bgImageView" destination="7ZS-52-uiI" id="gSe-c6-mXD"/>
                         <outlet property="cityLabel" destination="iVS-Pg-6FR" id="zFu-Sc-COH"/>
+                        <outlet property="clothesView" destination="wrQ-Iu-DGL" id="yvv-L6-yKK"/>
                         <outlet property="tempretureLabel" destination="FLZ-Q8-UGT" id="udI-Q2-4H0"/>
                         <outlet property="weatherIcon" destination="R1J-g4-C5W" id="BRm-TO-4TP"/>
                     </connections>
@@ -156,16 +156,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LFA-97-zuR">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LFA-97-zuR">
                                 <rect key="frame" x="131" y="130" width="160" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="DRu-fR-qqH"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ki-VI-fTN">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ki-VI-fTN">
                                 <rect key="frame" x="142" y="195" width="130" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="getWeatherPressed:" destination="fof-it-nHJ" eventType="touchUpInside" id="Ekz-j7-xEG"/>
@@ -173,6 +174,15 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LFA-97-zuR" firstAttribute="top" secondItem="Qac-Hb-4ax" secondAttribute="top" constant="66" id="88X-Np-DtI"/>
+                            <constraint firstItem="4Ki-VI-fTN" firstAttribute="top" secondItem="LFA-97-zuR" secondAttribute="bottom" constant="35" id="G81-9L-aJd"/>
+                            <constraint firstItem="4Ki-VI-fTN" firstAttribute="centerX" secondItem="aXe-Pt-RfU" secondAttribute="centerX" id="IoX-KX-uvQ"/>
+                            <constraint firstItem="4Ki-VI-fTN" firstAttribute="leading" secondItem="Qac-Hb-4ax" secondAttribute="leading" constant="142" id="KmH-gX-aI1"/>
+                            <constraint firstItem="Qac-Hb-4ax" firstAttribute="trailing" secondItem="LFA-97-zuR" secondAttribute="trailing" constant="123" id="L5R-Gb-Jce"/>
+                            <constraint firstItem="Qac-Hb-4ax" firstAttribute="bottom" secondItem="4Ki-VI-fTN" secondAttribute="bottom" constant="501" id="oDU-po-3Nk"/>
+                            <constraint firstItem="LFA-97-zuR" firstAttribute="leading" secondItem="Qac-Hb-4ax" secondAttribute="leading" constant="131" id="upf-vR-36i"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Qac-Hb-4ax"/>
                     </view>
                     <connections>
@@ -230,19 +240,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SsN-d3-VkU">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SsN-d3-VkU">
                                 <rect key="frame" x="0.0" y="100" width="414" height="104"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="104" id="pm1-Ad-QEw"/>
+                                </constraints>
                             </pickerView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0HP-Hb-iup" customClass="GKBarGraph">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0HP-Hb-iup" customClass="GKBarGraph">
                                 <rect key="frame" x="0.0" y="276" width="414" height="331"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.81926003889999999" green="0.81624031720000001" blue="0.81605386059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWb-b2-4Ho">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWb-b2-4Ho">
                                 <rect key="frame" x="102" y="212" width="211" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.37837859421358389" blue="0.15222203728021033" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="VCc-EP-fcg"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="comparePressed:" destination="quP-w8-QQO" eventType="touchUpInside" id="KvC-RQ-KJw"/>
@@ -250,6 +263,18 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SsN-d3-VkU" firstAttribute="leading" secondItem="0HP-Hb-iup" secondAttribute="leading" id="8DA-fE-jut"/>
+                            <constraint firstItem="SsN-d3-VkU" firstAttribute="centerX" secondItem="fWb-b2-4Ho" secondAttribute="centerX" id="BIH-Oz-ZaP"/>
+                            <constraint firstItem="SsN-d3-VkU" firstAttribute="trailing" secondItem="0HP-Hb-iup" secondAttribute="trailing" id="DEi-ZX-2LR"/>
+                            <constraint firstItem="SsN-d3-VkU" firstAttribute="leading" secondItem="ayS-IP-HLH" secondAttribute="leading" id="Ijs-ia-cMZ"/>
+                            <constraint firstItem="fWb-b2-4Ho" firstAttribute="top" secondItem="SsN-d3-VkU" secondAttribute="bottom" constant="8" symbolic="YES" id="KBE-k2-OAV"/>
+                            <constraint firstItem="SsN-d3-VkU" firstAttribute="top" secondItem="0ul-jG-9Py" secondAttribute="top" constant="36" id="U9u-fH-A8t"/>
+                            <constraint firstItem="0HP-Hb-iup" firstAttribute="top" secondItem="fWb-b2-4Ho" secondAttribute="bottom" constant="22" id="a7h-Gu-3DK"/>
+                            <constraint firstAttribute="trailing" secondItem="SsN-d3-VkU" secondAttribute="trailing" id="ae3-oX-skK"/>
+                            <constraint firstItem="0ul-jG-9Py" firstAttribute="bottom" secondItem="0HP-Hb-iup" secondAttribute="bottom" constant="129" id="bNI-6e-Efr"/>
+                            <constraint firstItem="fWb-b2-4Ho" firstAttribute="leading" secondItem="0ul-jG-9Py" secondAttribute="leading" constant="102" id="cHU-tL-NVP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="0ul-jG-9Py"/>
                     </view>
                     <connections>

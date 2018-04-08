@@ -48,7 +48,7 @@ class CompareCityController: UIViewController, GKBarGraphDataSource, UIPickerVie
         self.view.addSubview(square)
         
         self.animator = UIDynamicAnimator(referenceView:self.view)
-        var gravity = UIGravityBehavior(items: [square])
+        let gravity = UIGravityBehavior(items: [square])
         
         animator!.addBehavior(gravity)
         

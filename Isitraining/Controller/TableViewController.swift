@@ -16,7 +16,6 @@ protocol backToMain {
 }
 
 
-
 class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBarDelegate {
     
     
@@ -36,9 +35,7 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
     var listOfCitysInString : [String] = []
     var isSearching = false
     var userDefaults = UserDefaults.standard
-    
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
@@ -49,14 +46,10 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
         for object in listOfCitysInString{
             print(object)
         }
-
-
          self.navigationItem.rightBarButtonItem = self.editButtonItem
         myTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
         configureTableview()
         myTableView.tableFooterView = UIView()
-
-
     }
     
     override func viewDidLayoutSubviews() {
@@ -72,8 +65,6 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
     }
     
 
-
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching {
             return filtredCityList.count
@@ -82,7 +73,6 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         
         print("selected row \(indexPath.row)")
         print("Selected city = \(listOfCitysInString[indexPath.row])")
@@ -102,7 +92,6 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
         let params : [String : String] = ["q" : listOfCitysInString[indexPath.row], "appid" : APP_ID]
         getWeatherData(url: WEATHER_URL, parameters: params, cell : cell)
 
-        
 //        if isSearching {
 //            cell.cityLabel.text = filtredCityList[indexPath.row].city
 //            cell.tempLabel.text = "\(filtredCityList[indexPath.row].temperature) ℃"
@@ -116,6 +105,8 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
         return cell
     }
     
+    
+    //Detta funkar inte atm
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.alpha = 0
         let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 30, 0)
@@ -158,9 +149,6 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
                 cell.tempLabel.text = String("\(self.weatherModel.temperature)" + "℃")
                 cell.iconView.image = UIImage(named: self.weatherModel.weatherIconName)
             
-            
-            
-            
            
             listOfCitys.append(weatherModel)
 
@@ -179,13 +167,11 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
     }
     
 
-    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
  
-
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -197,9 +183,6 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
         } else if editingStyle == .insert {
         }
     }
-
-
-    // MARK: - Navigation
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == nil || searchBar.text == ""{
@@ -215,13 +198,9 @@ class TableViewController: UITableViewController, ChangeCityDelegate, UISearchBa
         }
     }
  
-
-    
-    
     func userEnteredANewCityName(city: String) {
         
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
